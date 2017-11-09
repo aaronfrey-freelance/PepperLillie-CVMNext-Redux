@@ -44,7 +44,7 @@
         </div>
         <div id="news-title" class="latest-news-title"></div>
         <div id="news-location" class="latest-news-location"></div>
-        <a id="news-link" href="#" class="btn btn-default">Read More</a>
+        <!-- <a id="news-link" href="#" class="btn btn-default">Read More</a> -->
     </div>
 
 </div>

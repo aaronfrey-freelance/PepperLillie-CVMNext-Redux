@@ -142,7 +142,7 @@
             var currentSlide = $('[data-slide-count="' + currentIndex + '"]');
             $('#news-title').text($(currentSlide).data('title'));
             $('#news-location').text($(currentSlide).data('location'));
-            $('#news-link').attr('href', $(currentSlide).data('link'));
+            // $('#news-link').attr('href', $(currentSlide).data('link'));
             $('.loading').hide();
             $(".bxsliderWrapper").css("visibility", "visible");
           },
@@ -150,7 +150,7 @@
             var currentSlide = $('[data-slide-count="' + newIndex + '"]');
             $('#news-title').text($(currentSlide).data('title'));
             $('#news-location').text($(currentSlide).data('location'));
-            $('#news-link').attr('href', $(currentSlide).data('link'));
+            // $('#news-link').attr('href', $(currentSlide).data('link'));
           }
         });
 
