@@ -1,0 +1,137 @@
+.mfp-ready .mfp-figure {
+    opacity: 0;
+}
+
+.mfp-zoom-in {
+    /* start state */
+    .mfp-figure {
+        opacity: 0;
+        transition: all 0.3s ease-out;
+        transform: scale(0.9);
+    }
+    &.mfp-bg,
+    .mfp-preloader {
+        opacity: 0;
+        transition: all 0.3s ease-out;
+    }
+    /* animate in */
+    &.mfp-image-loaded {
+        .mfp-figure {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+    &.mfp-ready {
+        &.mfp-bg,
+        .mfp-preloader {
+            opacity: 0.8;
+        }
+    }
+    /* animate out */
+    &.mfp-removing {
+        .mfp-figure {
+            transform: scale(0.9);
+            opacity: 0;
+        }
+        &.mfp-bg,
+        .mfp-preloader {
+            opacity: 0;
+        }
+    }
+}
+
+
+/* CSS-based preloader */
+
+.mfp-preloader {
+    width: 30px;
+    height: 30px;
+    background-color: #FFF;
+    opacity: 0.65;
+    margin: 0 auto;
+    animation: rotateplane 1.2s infinite ease-in-out;
+}
+
+@keyframes rotateplane {
+    0% {
+        transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+    }
+    50% {
+        transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
+    }
+    100% {
+        transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg)
+    }
+}
+
+.page,
+.tag,
+.archive,
+.single {
+    .page-header {
+        text-transform: lowercase;
+        border-bottom: none;
+        margin: 0;
+        padding: 0;
+        h3 {
+            margin: 0 0 25px;
+            line-height: 1;
+        }
+    }
+}
+
+.contact {
+    .main {
+        width: 100%;
+        padding-bottom: 0;
+        h3 {
+            margin: 20px 0;
+        }
+        .btn {
+            text-transform: lowercase;
+            padding: 10px 20px;
+            font-weight: 100;
+        }
+        .page-header {
+            display: none;
+        }
+        .one_third.last_column {
+            background-color: $white-color;
+        }
+        .one_third {
+            width: 100%;
+            padding: 0 25px;
+            margin-bottom: 25px;
+        }
+        .two_third {
+            width: 100%;
+            padding: 0;
+            margin-bottom: 25px;
+        }
+    }
+}
+
+
+/* Small Devices, Tablets */
+
+@media only screen and (min-width: 768px) {}
+
+
+/* Medium Devices, Desktops */
+
+@media only screen and (min-width: 992px) {
+    .contact {
+        .main-container {
+            min-height: 600px;
+            .one_third {
+                width: 33.3333%;
+            }
+            .two_third {
+                width: 66.6666%;
+                padding: 0 25px 0;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1200px) {}

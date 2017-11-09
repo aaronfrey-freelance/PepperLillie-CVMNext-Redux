@@ -1,0 +1,108 @@
+#nav-primary-mobile {
+    height: 100%;
+    background-color: $blue-color;
+    &:not(.mm-menu) {
+        display: none;
+    }
+    .mm-close {
+        &::after {
+            font-family: FontAwesome;
+            content: '\f00d';
+        }
+        &::after,
+        &::before {
+            border: none;
+            -webkit-transform: rotate(0);
+            -o-transform: rotate(0);
+            transform: rotate(0);
+            margin: 0;
+            left: 25px;
+            top: 10px;
+            font-size: 16px;
+            color: $white-color;
+        }
+    }
+    .mm-navbar-top {
+        border-color: $white-color;
+    }
+    #menu-header-navigation {
+        padding: 0;
+        &::before {
+            height: 0;
+        }
+        .mm-listview>li:not(.mm-divider):after {
+            left: 0;
+            border-color: $white-color;
+        }
+        .mm-listview>li.mm-vertical>.mm-next {
+            border: transparent;
+            height: 60px;
+            background: rgba(0, 0, 0, 0);
+        }
+        .mm-listview>li.mm-vertical>.mm-next:after {
+            top: 0;
+            bottom: 0;
+            border-color: $white-color;
+        }
+        .mm-listview {
+            .mm-opened {
+                background-color: $white-color;
+                &>a {
+                    color: $blue-color;
+                    padding: 30px 25px 0 25px;
+                }
+                .mm-next::after {
+                    border-color: $blue-color !important;
+                }
+            }
+            &>li>a {
+                font-size: 18px;
+                padding: 20px 25px;
+                text-transform: uppercase;
+                color: $white-color;
+            }
+        }
+        .mm-opened {
+            background-color: $white-color;
+        }
+        .menu-item-has-children {
+            .mm-panel {
+                background: rgba(255, 255, 255, 1);
+                .mm-listview {
+                    padding: 0 10% 0 15px;
+                    &>li {
+                        &::after {
+                            border-color: $blue-color;
+                        }
+                        &:last-child::after {
+                            border: none;
+                        }
+                        &>a {
+                            text-transform: none;
+                            height: 43px;
+                            line-height: 43px;
+                            padding: 0;
+                            color: $blue-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    #nav-primary-mobile {
+        min-width: 80%;
+        width: 80%;
+    }
+}
+
+
+/* Medium Devices, Desktops */
+
+@media only screen and (min-width: 992px) {
+    #nav-primary-mobile {
+        display: none !important;
+    }
+}

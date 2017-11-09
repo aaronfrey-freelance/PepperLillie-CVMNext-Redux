@@ -1,0 +1,173 @@
+/* Pagination Links */
+
+.pagination {
+    .nav-links {
+        .current,
+        .page-numbers {
+            border: 1px solid #d6d7d8;
+            font-size: 18px;
+            color: $blue-color;
+            height: 37px;
+            width: 37px;
+            line-height: 37px;
+            display: inline-block;
+            text-align: center;
+            i {
+                font-size: 14px;
+                top: -1px;
+                position: relative;
+            }
+        }
+        .current {
+            background-color: #f5f5f6;
+        }
+    }
+}
+
+
+/* Social area under news articles */
+
+.get-more {
+    border-top: 1px solid #d6d7d8;
+    border-bottom: 1px solid #d6d7d8;
+    padding: 19px 0 17px 0;
+    .post-date {
+        color: $blue-color;
+        font-size: 12px;
+        line-height: 1;
+        margin-bottom: 8px;
+    }
+    .social-share span {
+        float: left;
+        width: 16px;
+        margin-right: 4px;
+    }
+}
+
+.service-project-box {
+    display: table;
+    width: 100%;
+    height: 200px;
+    margin-bottom: 15px;
+    background-size: cover;
+    background-position: center center;
+    .project-title {
+        @include transition-mixin;
+        opacity: 0;
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+        color: #ffffff;
+        height: 100%;
+        padding: 0 20px;
+        background-color: rgba(0, 86, 149, .7);
+        &:hover {
+            opacity: 1;
+        }
+    }
+    &.large {
+        height: 300px;
+    }
+}
+
+article {
+    margin-bottom: 40px;
+    font-size: 16px;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: $blue-color;
+        font-weight: 700;
+        line-height: 1.3;
+    }
+    ul {
+        padding-left: 20px;
+        list-style: inherit;
+    }
+    .entry-title {
+        font-size: 22px;
+        a {
+            font-size: 22px;
+            font-weight: 700;
+            color: #777777;
+        }
+    }
+}
+
+// Similar Projects
+.additional-links {
+    .icon-title {
+        font-size: 16px;
+        font-style: italic;
+        color: #ffffff;
+        padding: 15px 18px;
+        background-color: #777777;
+    }
+    a {
+        display: block;
+        position: relative;
+        background-color: #eaebec;
+        color: #b15c11;
+        font-size: 18px;
+        border-bottom: 1px solid #fff;
+        padding: 13px 50px 13px 18px;
+        i {
+            font-size: 12px;
+            position: absolute;
+            right: 24px;
+            top: 20px;
+        }
+        &:hover,
+        &:focus {
+            background-color: #e0dede;
+            color: #b15c11;
+        }
+    }
+}
+
+.single-service {
+    .main {
+        padding-bottom: 0;
+    }
+    .page-header {
+        h3 {
+            text-transform: none;
+        }
+    }
+    .service-image {
+        margin-bottom: 25px;
+    }
+}
+
+.news-image {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+
+/* Small Devices, Tablets */
+
+@media only screen and (min-width: 768px) {
+    article {
+        .entry-title {
+            font-size: 28px;
+            a {
+                font-size: 28px;
+            }
+        }
+    }
+    .service-project-box {
+        height: 156.5px;
+        &.large {
+            height: 500px;
+        }
+    }
+}
+
+
+/* Medium Devices, Desktops */
+
+@media only screen and (min-width: 992px) {}

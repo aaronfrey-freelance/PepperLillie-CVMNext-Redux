@@ -1,0 +1,49 @@
+.btn {
+    font-size: 12px;
+    border-radius: 0;
+    border: none;
+    padding: 3px 40px;
+    position: relative;
+}
+
+.btn-default {
+    background-color: $white-color;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: $blue-color;
+    &:hover,
+    &:focus,
+    &:active:focus {
+        background-color: $white-color;
+        color: $blue-color;
+    }
+}
+
+.btn-primary {
+    background-color: $blue-color;
+    color: $white-color;
+    text-transform: uppercase;
+    font-weight: bold;
+    &:hover,
+    &:focus,
+    &:active:focus {
+        background-color: $blue-color;
+        color: $white-color;
+    }
+}
+
+.btn-gray {
+    background-color: $light-gray-color;
+    font-size: 21px;
+    line-height: 1;
+    &.before {
+        width: 100%;
+        margin: 28px 0;
+        padding: 15px 0;
+        @include font-awesome-psuedo-before(16px, 20px, 14px);
+    }
+    &.after {
+        padding: 6px 46px 6px 43px;
+        @include font-awesome-psuedo-after(16px, 13px, 14px);
+    }
+}

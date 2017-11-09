@@ -1,0 +1,27 @@
+// Search form
+.search-form {
+    @extend .form-inline;
+    margin-bottom: 50px;
+}
+
+.search-form label {
+    font-weight: normal;
+    @extend .form-group;
+}
+
+.search-form .search-field {
+    @extend .form-control;
+}
+
+.search-form .search-submit {
+    @extend .btn;
+    @extend .btn-primary;
+    padding: 8px 40px;
+}
+
+.wpcf7-form {
+	p {
+		color: #777777;
+		margin: 5px;
+	}
+}

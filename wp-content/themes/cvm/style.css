@@ -1,0 +1,18 @@
+/*
+Theme Name:         CVM Theme
+Theme URI:          http://pepperlillie.com/
+Description:        CVM Custom Wordpress Theme
+Version:            1.0.0
+Author:             PepperLillie
+Author URI:         https://pepperlillie.com/
+
+License:            MIT License
+License URI:        http://opensource.org/licenses/MIT
+*/
+
+.page-id-612 .sidebar,
+.page-id-59 .sidebar,
+.page-id-46 .sidebar,
+.page-id-149 .sidebar {
+  display: none;
+}

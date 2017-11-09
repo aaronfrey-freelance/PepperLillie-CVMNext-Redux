@@ -1,0 +1,105 @@
+.news-ticker {
+    #marquee {
+        overflow: hidden;
+        margin: 20px 0 20px 0;
+        padding: 0 20px;
+        height: 32px;
+        display: block;
+        background-color: #005695;
+        width: 100%;
+        font-size: .75em;
+        color: #fff;
+        a {
+            color: #fff;
+            font-size: 14px;
+            line-height: 32px;
+            padding: 0 25px;
+            &.marquee-item {
+                border-right: 1px solid #fff;
+                &:last-of-type {
+                    border-right: none;
+                }
+            }
+        }
+    }
+}
+
+.content-info {
+    background-color: $footer-color;
+    padding: 20px 0 50px 0;
+    &>.container {
+        .social-links {
+            @include clearfix;
+            margin-bottom: 14px;
+            a {
+                float: left;
+                font-size: 10px;
+                text-align: center;
+                margin-right: 4px;
+                line-height: 20px;
+                height: 20px;
+                width: 20px;
+                background-color: #747576;
+                color: #fff !important;
+            }
+        }
+        .footer-contact {
+            p {
+                font-weight: 700;
+                font-size: 12px;
+                margin: 0 0 10px;
+            }
+            a {
+                color: $text-gray-color;;
+            }
+        }
+    }
+    p {
+        color: #777777;
+    }
+}
+
+
+/* Small Devices, Tablets */
+
+@media only screen and (min-width: 768px) {
+    .content-info {
+        padding: 20px 0;
+        &>.container {
+            .footer-nav {
+                li {
+                    border-bottom: 1px solid $text-gray-color;
+                    a {
+                        display: inline-block;
+                        color: $text-gray-color;
+                        font-size: 13px;
+                        padding: 5px 0 4px 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* Medium Devices, Desktops */
+
+@media only screen and (min-width: 992px) {
+    .content-info {
+        &>.container {
+            .footer-nav {
+                li {
+                    a {
+                        font-size: 15px;
+                        padding: 4px 0 2px 0;
+                    }
+                }
+            }
+            .footer-contact {
+                p {
+                    font-size: 13px;
+                }
+            }
+        }
+    }
+}

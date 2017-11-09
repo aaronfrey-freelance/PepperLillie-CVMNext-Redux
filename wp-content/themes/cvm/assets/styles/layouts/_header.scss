@@ -1,0 +1,158 @@
+.banner {
+    height: 150px;
+    .brand {
+        position: absolute;
+        float: left;
+        display: inline-block;
+        margin: 16px;
+        img {
+            width: 290px;
+        }
+    }
+    .nav-primary-container {
+        float: right;
+        .navbar-toggle {
+            margin: 0;
+            padding: 19px 0;
+            .icon-bar {
+                background-color: $blue-color;
+                height: 3px;
+                width: 15px;
+                border-radius: 0;
+                &+.icon-bar {
+                    margin-top: 2px;
+                }
+            }
+            .icon-bar-text {
+                text-transform: uppercase;
+                padding-left: 7px;
+                line-height: 1;
+            }
+        }
+        .search-container {
+            padding: 10px 15px 0;
+            a {
+                line-height: 34px;
+                display: inline-block;
+                float: left;
+            }
+            .search-form {
+                padding: 2px 0;
+                margin: 0 0 0 8px;
+                float: left;
+                display: none;
+                label {
+                    margin-bottom: 0;
+                }
+                .search-field {
+                    height: 30px;
+                    border: 2px solid $blue-color;
+                    border-radius: 20px;
+                    @include placeholder($blue-color);
+                }
+                .search-submit {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 395px) {
+    .search-container {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .banner {}
+}
+
+
+/* Medium Devices, Desktops */
+
+@media only screen and (min-width: 992px) {
+    .banner {
+        .brand {
+            margin: 16px 0;
+        }
+        .nav-primary-container {
+            margin-top: 83px;
+            ul.navbar-nav.nav {
+                .open>a,
+                .open>a:focus,
+                .open>a:hover {
+                    background-color: transparent;
+                }
+                &>li {
+                    &:nth-last-of-type(2) {
+                        &>a {
+                            padding-right: 0;
+                        }
+                    }
+                    &.featured-projects {
+                        ul.dropdown-menu {
+                            a {
+                                text-transform: none;
+                            }
+                        }
+                    }
+                    &>a {
+                        padding: 9px 10px 38px;
+                        text-transform: uppercase;
+                        &:hover,
+                        &:focus {
+                            opacity: 0.8;
+                            background-color: transparent;
+                        }
+                    }
+                    ul.dropdown-menu {
+                        background-color: #777777;
+                        border-radius: 0;
+                        border: none;
+                        box-shadow: none;
+                        padding: 0 10px;
+                        min-width: 200px;
+                        top: 67px;
+                        &>li {
+                            border-bottom: 1px solid #bbbbbb;
+                            &:last-child {
+                                border-bottom: none;
+                            }
+                            &>a {
+                                color: $white-color;
+                                text-transform: lowercase;
+                                padding: 6px 5px;
+                                &:hover,
+                                &:focus {
+                                    opacity: 0.8;
+                                    background-color: transparent;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .search-container {
+                position: absolute;
+                top: 15px;
+                right: 15px;
+                padding-right: 0;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .banner {
+        .nav-primary-container {
+            ul.navbar-nav.nav {
+                &>li {
+                    &>a {
+                        padding: 9px 20px 38px;
+                    }
+                }
+            }
+        }
+    }
+}

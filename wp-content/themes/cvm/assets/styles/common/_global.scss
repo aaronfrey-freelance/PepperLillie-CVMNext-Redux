@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i');
+body {
+    font-family: $font-stack;
+    background-color: $white-color;
+}
+
+.main-column {
+    padding-top: 25px;
+}
+
+.ghost-image {
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center center;
+}
+
+.home {
+    .ghost-image {
+        background-image: none !important;
+    }
+}
+
+.contact {
+    .ghost-image {
+        background-image: url('../images/contact-bg.jpg') !important;
+        background-attachment: initial !important;
+    }
+}
+
+.wp-caption {
+    width: 100% !important;
+    img {
+        width: 100%;
+    }
+}
+
+.page-header {
+    h3 {
+        font-style: italic;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: $blue-color;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+h3 {
+    font-size: 20px;
+    line-height: 1.2;
+}
+
+a {
+    color: $blue-color;
+    &:hover,
+    &:focus,
+    &:active:focus {
+        color: $blue-color;
+    }
+}
+
+p {
+    margin: 0 0 25px;
+}
+
+.main {
+    ul,
+    ol {
+        padding-left: 20px;
+        list-style-type: circle;
+        li {
+            padding-bottom: 10px;
+        }
+    }
+}
+
+p,
+li {
+    color: $text-gray-color;
+    font-size: 15px;
+}
+
+strong {
+    color: #333333;
+}
+
+em {
+    font-style: italic;
+    font-weight: 400;
+}
+
+/* Small Devices, Tablets */
+
+@media only screen and (min-width: 768px) {
+    h3 {
+        font-size: 24px;
+    }
+    p,
+    li {
+        font-size: 17px;
+    }
+    .page,
+    .single,
+    .archive {
+        .main {
+            padding-bottom: 50px;
+        }
+    }
+}
+
+
+/* Medium Devices, Desktops */
+
+@media only screen and (min-width: 992px) {}
+
+
+/* Mixins */
+
+@mixin font-awesome-psuedo-before($left,
+$top,
+$font-size: 12px,
+$content: '\f053') {
+    &:before {
+        font-family: FontAwesome;
+        font-size: $font-size;
+        content: $content;
+        position: absolute;
+        left: $left;
+        top: $top;
+    }
+}
+
+@mixin font-awesome-psuedo-after($right,
+$top,
+$font-size: 12px,
+$content: '\f054') {
+    &:after {
+        font-family: FontAwesome;
+        font-size: $font-size;
+        content: $content;
+        position: absolute;
+        right: $right;
+        top: $top;
+    }
+}
+
+
+/* Animations */
+
+@mixin transition-mixin() {
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}

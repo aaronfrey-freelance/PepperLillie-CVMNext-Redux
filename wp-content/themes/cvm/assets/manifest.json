@@ -1,0 +1,42 @@
+{
+  "dependencies": {
+    "main.js": {
+      "files": [
+        "scripts/main.js",
+        "scripts/jquery.mmenu.all.min.js",
+        "scripts/jquery.mmenu.wordpress.min.js",
+        "scripts/jquery.bxslider.min.js",
+        "scripts/jquery.matchHeight.js",
+        "scripts/jquery.marquee.js",
+        "scripts/jquery.magnific-popup.js"
+      ],
+      "main": true
+    },
+    "admin.js": {
+      "files": [
+        "scripts/jquery.validate.js"
+      ]
+    },
+    "main.css": {
+      "files": [
+        "styles/main.scss",
+        "styles/font-awesome/font-awesome.scss",
+        "styles/jquery.mmenu.all.css",
+        "styles/jquery.bxslider.css",
+        "styles/magnific-popup.css"
+      ],
+      "main": true
+    },
+    "customizer.js": {
+      "files": [
+        "scripts/customizer.js"
+      ]
+    },
+    "jquery.js": {
+      "bower": ["jquery"]
+    }
+  },
+  "config": {
+    "devUrl": "http://localhost:8888/Freelance/PepperLillie-CVMNext-Redux"
+  }
+}
