@@ -11,7 +11,7 @@
 
         $post_objects = get_field('home_page_slide', 'option');
 
-        if ($post_objects) : shuffle($post_objects);
+        if ($post_objects) :
 
             foreach ($post_objects as $idx => $post) : setup_postdata($post);
 
