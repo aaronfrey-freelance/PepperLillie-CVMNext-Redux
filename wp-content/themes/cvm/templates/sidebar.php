@@ -33,13 +33,14 @@ $menu_items = wp_get_nav_menu_items('Header Navigation');
 $services_id = 0;
 $services_sub = [];
 
-foreach($menu_items as $menu_item) {
+foreach ($menu_items as $menu_item) {
   if($menu_item->title === 'Services') {
     $services_id = $menu_item->ID;
+    break;
   }
 }
 
-if($services_id) {
+if ($services_id) {
   foreach($menu_items as $menu_item) {
     if($menu_item->menu_item_parent == $services_id) {
       $services_sub[$menu_item->object_id] = null; 
@@ -56,7 +57,7 @@ if($services_id) {
   // Get all of the top level services
   $args = array(
     'posts_per_page' => -1,
-    'post_type'   => 'service'
+    'post_type' => 'service'
   );
   $top_level_services = get_posts($args);
 
@@ -64,7 +65,8 @@ if($services_id) {
     setup_postdata($post);
     $featured_project = get_field('featured_service_project', $post->ID);
     if ($featured_project && array_key_exists($post->ID, $services_sub)) {
-      $services_sub[$post->ID] = $featured_project;
+      $services_sub[$post->ID] =
+        ['project' => $featured_project, 'service_name' => $post->post_title];
     }
   endforeach;
   wp_reset_postdata();
@@ -73,12 +75,14 @@ if($services_id) {
 
     if ($featured_project) :
 
-      $thumb_id = get_post_thumbnail_id($featured_project->ID);
+      $thumb_id = get_post_thumbnail_id($featured_project['project']->ID);
       $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'large', true);
       $thumb_url = $thumb_url_array[0]; ?>
 
-      <a href="<?php echo get_permalink($featured_project->post_parent); ?>" class="service-project-box" style="background-image: url(<?php echo $thumb_url; ?>);">
-        <div class="project-title"><?php echo $featured_project->post_title; ?></div>
+      <a href="<?php echo get_permalink($featured_project['project']->post_parent); ?>"
+        class="service-project-box"
+        style="background-image: url(<?php echo $thumb_url; ?>);">
+        <div class="project-title"><?php echo $featured_project['service_name']; ?></div>
       </a>
 
     <?php endif; ?>
