@@ -12,11 +12,6 @@
       ],
       "main": true
     },
-    "admin.js": {
-      "files": [
-        "scripts/jquery.validate.js"
-      ]
-    },
     "main.css": {
       "files": [
         "styles/main.scss",
