@@ -27,6 +27,28 @@
 
   endif; ?>
 
+<?php elseif (is_market_page()) :
+
+  $images = get_field('market_images');
+
+  if ($images) :
+
+    foreach ($images as $image) : ?>
+
+      <div class="service-project-box" style="background-image: url(<?php echo $image['sizes']['large']; ?>);">
+        <div class="project-title"><?php echo $image['alt']; ?></div>
+      </div>
+
+      <!-- <a href="<?php echo $image['url']; ?>"
+        class="service-project-box"
+        style="background-image: url(<?php echo $image['sizes']['large']; ?>);">
+        <div class="project-title"><?php echo $image['alt']; ?></div>
+      </a> -->
+
+    <?php endforeach; ?>
+
+  <?php endif; ?>
+
 <?php elseif (is_page('profile')) :
 
 $menu_items = wp_get_nav_menu_items('Header Navigation');
