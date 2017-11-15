@@ -112,6 +112,25 @@ function create_custom_post_types() {
     'rewrite' => array('slug' => 'position'),
   ));
 
+  register_post_type('market',
+    array(
+      'labels' => array(
+        'name' => __('Markets'),
+        'singular_name' => __('Market'),
+        'add_new_item' => 'Add New Market',
+        'edit_item' => 'Edit Market',
+        'featured_image' => 'Market Image',
+        'set_featured_image' => 'Set Market Image',
+        'remove_featured_image' => 'Remove Market Image'
+      ),
+      'public' => true,
+      'show_in_nav_menus' => true,
+      'menu_icon' => 'dashicons-building',
+      'hierarchical' => true,
+      'supports' => ['editor', 'title', 'thumbnail']
+    )
+  );
+
   register_post_type('service',
     array(
       'labels' => array(
@@ -177,6 +196,12 @@ function is_service_page() {
 function is_news_page() {
   global $post;
   return $post->post_type === 'news' && !is_tag() && !is_search();
+}
+
+// Are we on a Market page?
+function is_market_page() {
+  global $post;
+  return $post->post_type === 'market' && !is_tag() && !is_search();
 }
 
 // Get the service page color
