@@ -31,9 +31,11 @@
 
   $images = get_field('market_images');
 
-  if ($images) :
+  if ($images) : ?>
 
-    foreach ($images as $image) : ?>
+    <div style="margin-top: 49px;">
+
+    <?php foreach ($images as $image) : ?>
 
       <div class="service-project-box" style="background-image: url(<?php echo $image['sizes']['large']; ?>);">
         <div class="project-title"><?php echo $image['alt']; ?></div>
@@ -46,6 +48,8 @@
       </a> -->
 
     <?php endforeach; ?>
+
+    </div>
 
   <?php endif; ?>
 
