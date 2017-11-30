@@ -52,32 +52,32 @@ add_action('init', 'create_custom_post_types');
 
 function create_custom_post_types() {
 
-  register_post_type('news',
-    array(
-      'labels' => array(
-        'name' => __('News'),
-        'singular_name' => __('News'),
-        'add_new_item' => 'Add News Item',
-        'edit_item' => 'Edit News Item',
-        'featured_image' => 'News Image',
-        'set_featured_image' => 'Set News Image',
-        'remove_featured_image' => 'Remove News Image'
-      ),
-      'has_archive' => true,
-      'publicly_queryable' => true,
-      'public' => true,
-      'show_in_nav_menus' => true,
-      'menu_icon' => 'dashicons-id-alt',
-      'supports' => ['editor', 'excerpt', 'title', 'thumbnail']
-    )
-  );
+  // register_post_type('news',
+  //   array(
+  //     'labels' => array(
+  //       'name' => __('News'),
+  //       'singular_name' => __('News'),
+  //       'add_new_item' => 'Add News Item',
+  //       'edit_item' => 'Edit News Item',
+  //       'featured_image' => 'News Image',
+  //       'set_featured_image' => 'Set News Image',
+  //       'remove_featured_image' => 'Remove News Image'
+  //     ),
+  //     'has_archive' => true,
+  //     'publicly_queryable' => true,
+  //     'public' => true,
+  //     'show_in_nav_menus' => true,
+  //     'menu_icon' => 'dashicons-id-alt',
+  //     'supports' => ['editor', 'excerpt', 'title', 'thumbnail']
+  //   )
+  // );
 
   register_post_type('people',
     array(
       'labels' => array(
         'name' => __('People'),
         'singular_name' => __('Person'),
-        'add_new_item' => 'Add News Person',
+        'add_new_item' => 'Add New Person',
         'edit_item' => 'Edit Person',
         'featured_image' => 'Portrait',
         'set_featured_image' => 'Set Portrait',
