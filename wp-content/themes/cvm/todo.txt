@@ -1,13 +1,5 @@
-Change Home Page (page one of attached)
-
 * Create the 2/3 – 1/3 relationship seen on the CVM Engineers home page. On the left would be a slideshow, on the right five project types.
 
-* Slide show operates as normal, but move the nav/label box to the left and left justify with logo.
-
-* Change label above project type boxes to “Project Types”
-
 * Add mechanism for managing new “Project Type” pages (page two of attached)
-
-	Each project type needs a page. We have menus in the dashboard sidebar for markets and services, and we would need something similar for Project Types.
 
 	The pages themselves can be just like the Services or Markets pages, but with one exception: On these pages, in the right-hand column, can we have an option of making those photos live (like the service page, leading to project descriptions) or just roll-overs (like the markets page, revealing just the client and project)?

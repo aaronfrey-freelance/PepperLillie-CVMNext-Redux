@@ -9,26 +9,27 @@
 
     <?php $post_objects = get_field('home_page_slide', 'option');
 
-        if ($post_objects) :
+    if ($post_objects) :
 
-            foreach ($post_objects as $idx => $post) : setup_postdata($post);
+        foreach ($post_objects as $idx => $post) : setup_postdata($post);
 
-                if (has_post_thumbnail()) : ?>
+            if (has_post_thumbnail()) : ?>
 
-                <li
-                    class="news-item"
-                    data-slide-count="<?php echo $idx; ?>"
-                    data-title="<?php the_title(); ?>"
-                    data-location="<?php the_field('project_location', get_the_ID()); ?>"
-                    data-link="<?php the_permalink(); ?>">
-                    <?php the_post_thumbnail('slider'); ?>
-                </li>
+            <li
+                style="background-image:url('<?php the_post_thumbnail_url("full"); ?>')"
+                class="news-item"
+                data-slide-count="<?php echo $idx; ?>"
+                data-title="<?php the_title(); ?>"
+                data-location="<?php the_field('project_location', get_the_ID()); ?>"
+                data-link="<?php the_permalink(); ?>">
+                <div class="visible-xs"><?php the_post_thumbnail('slider'); ?></div>
+            </li>
 
-                <?php endif;
+            <?php endif;
 
-            endforeach; wp_reset_postdata();
+        endforeach; wp_reset_postdata();
 
-        endif; ?>
+    endif; ?>
 
     </ul>
 

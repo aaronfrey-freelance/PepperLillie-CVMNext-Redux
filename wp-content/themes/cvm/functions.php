@@ -108,6 +108,25 @@ function create_custom_post_types() {
     )
   );
 
+  register_post_type('project-type',
+    array(
+      'labels' => array(
+        'name' => __('Project Types'),
+        'singular_name' => __('Project Type'),
+        'add_new_item' => 'Add New Project Type',
+        'edit_item' => 'Edit Project Type',
+        'featured_image' => 'Project Type Image',
+        'set_featured_image' => 'Set Project Type Image',
+        'remove_featured_image' => 'Remove Project Type Image'
+      ),
+      'public' => true,
+      'show_in_nav_menus' => true,
+      'menu_icon' => 'dashicons-building',
+      'hierarchical' => true,
+      'supports' => ['editor', 'title', 'thumbnail', 'page-attributes']
+    )
+  );
+
   register_post_type('service',
     array(
       'labels' => array(

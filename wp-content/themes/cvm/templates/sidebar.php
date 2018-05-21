@@ -1,4 +1,37 @@
-<?php if (is_market_page()) :
+<?php if (is_front_page()) : ?>
+
+  <?php $the_query = new WP_Query([
+    'post_type' => 'project-type',
+    'post_status' => 'publish'
+  ]);
+
+  if ($the_query->have_posts()) : ?>
+
+    <div class="services-header">Project Types</div>
+
+    <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
+
+      <a href="<?php the_permalink(); ?>" class="service-container">
+
+        <?php if (has_post_thumbnail()) : ?>
+          <?php the_post_thumbnail('thumbnail', ['class' => 'pull-left service-image']); ?>
+        <?php else : ?>
+          <img class="pull-left service-image" src="http://placehold.it/91x91">
+        <?php endif; ?>
+
+        <div class="pull-left service-info">
+          <div class="service-title"><?php the_title(); ?></div>
+          <div class="service-description"><?php the_field('project_type_description'); ?></div>
+        </div>
+        <i class="pull-right fa fa-chevron-right"></i>
+
+      </a>
+
+    <?php endwhile; ?>
+
+  <?php endif; wp_reset_postdata(); ?>
+
+<?php elseif (is_market_page()) :
 
   $images = get_field('market_images');
 
@@ -11,12 +44,6 @@
       <div class="service-project-box" style="background-image: url(<?php echo $image['sizes']['large']; ?>);">
         <div class="project-title"><?php echo $image['alt']; ?></div>
       </div>
-
-      <!-- <a href="<?php echo $image['url']; ?>"
-        class="service-project-box"
-        style="background-image: url(<?php echo $image['sizes']['large']; ?>);">
-        <div class="project-title"><?php echo $image['alt']; ?></div>
-      </a> -->
 
     <?php endforeach; ?>
 
@@ -89,8 +116,6 @@ if ($services_id) {
   </div>
 
 <?php else :
-
-  echo('tesssst');
 
   $is_project = has_term('service-projects', 'type');
   

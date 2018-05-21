@@ -21,6 +21,7 @@
   .latest-news {
     padding: 0;
     .news-item {
+      padding: 0;
       img {
         width: 100%;
         height: auto;
@@ -104,6 +105,10 @@
     .main-container {
       width: auto;
     }
+    .sidebar {
+      padding: 0;
+      margin-bottom: 15px;
+    }
   }
   .latest-news-info {
     margin-bottom: 0;
@@ -123,6 +128,11 @@
       padding: 0;
       .main {
         margin: 0;
+        width: calc(100% - 478px);        
+      }
+      .sidebar {
+        width: 470px;
+        margin: 0 0 15px 8px;
       }
     }
   }

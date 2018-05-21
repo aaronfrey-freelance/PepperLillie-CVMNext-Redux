@@ -169,7 +169,22 @@
           }
         }
 
-        $(window).on("load resize", addMarginNews);
+        // Do not make slider same height as sidebar on smaller sreens
+        function matchSliderHeight() {
+          if (getWindowWidth() < 768) {
+            $('.bx-viewport, .news-item').matchHeight({ remove: true });
+          } else {
+            // Make the featured news slider the same height as the sidebar
+            $('.bx-viewport, .news-item').matchHeight({
+              target: $('.sidebar')
+            });
+          }
+        }
+
+        $(window).on("load resize", function() {
+          addMarginNews();
+          matchSliderHeight();
+        });
 
       },
       finalize: function() {
