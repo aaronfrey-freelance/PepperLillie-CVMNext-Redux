@@ -155,29 +155,21 @@
         });
 
         // Make the recent news info have the same padding and margin as header
-        $('.latest-news-info').css('margin-right',
-          $('.banner .container').css("margin-right").replace("px", "") +
-          $('.banner .container').css("padding-right").replace("px", ""));
-
-        function addMarginNews() {
+        var addMarginNews = function() {
           if (getWindowWidth() < 768) {
-            $('.latest-news-info').css('margin-right', 0);
+            $('.latest-news-info').css('margin-left', 0);
           } else {
             var bannerContainer = $('.banner .container');
             var bannerColumn = $(bannerContainer).children();
 
             var a = parseInt($(bannerContainer).offset().left);
-            var b = parseInt($(bannerContainer).css("padding-right").replace("px", ""));
-            var c = parseInt($(bannerColumn).css("padding-right").replace("px", ""));
-            $('.latest-news-info').css('margin-right', a + b + c);
+            var b = parseInt($(bannerContainer).css("padding-left").replace("px", ""));
+            var c = parseInt($(bannerColumn).css("padding-left").replace("px", ""));
+            $('.latest-news-info').css('margin-left', a + b + c);
           }
         }
 
-        addMarginNews();
-
-        $(window).resize(function() {
-          addMarginNews();
-        });
+        $(window).on("load resize", addMarginNews);
 
       },
       finalize: function() {

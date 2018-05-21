@@ -29,9 +29,6 @@ unset($file, $filepath);
 
 /* Start Custom Functions */
 
-// Hide Admin Bar
-add_filter('show_admin_bar', '__return_false');
-
 // Add custom bootstrap walker for dropdown menus
 require_once('wp_bootstrap_navwalker.php');
 
@@ -51,26 +48,6 @@ add_filter('acf/fields/post_object/query', 'my_post_object_query', 10, 3);
 add_action('init', 'create_custom_post_types');
 
 function create_custom_post_types() {
-
-  // register_post_type('news',
-  //   array(
-  //     'labels' => array(
-  //       'name' => __('News'),
-  //       'singular_name' => __('News'),
-  //       'add_new_item' => 'Add News Item',
-  //       'edit_item' => 'Edit News Item',
-  //       'featured_image' => 'News Image',
-  //       'set_featured_image' => 'Set News Image',
-  //       'remove_featured_image' => 'Remove News Image'
-  //     ),
-  //     'has_archive' => true,
-  //     'publicly_queryable' => true,
-  //     'public' => true,
-  //     'show_in_nav_menus' => true,
-  //     'menu_icon' => 'dashicons-id-alt',
-  //     'supports' => ['editor', 'excerpt', 'title', 'thumbnail']
-  //   )
-  // );
 
   register_post_type('people',
     array(
@@ -190,12 +167,6 @@ function is_service_page() {
     return get_depth($post->ID);
   }
   return false;
-}
-
-// Are we on a News page?
-function is_news_page() {
-  global $post;
-  return $post->post_type === 'news' && !is_tag() && !is_search();
 }
 
 // Are we on a Market page?

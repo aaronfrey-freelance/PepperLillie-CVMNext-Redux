@@ -1,33 +1,4 @@
-<?php if (is_news_page()) :
-
-  if (get_field('display_featured_news', 'options')) :
-
-    $post_objects = get_field('featured_news_story', 'option');
-
-    usort($post_objects, function($a, $b) {
-      return strtotime($b->post_date) - strtotime($a->post_date);
-    });
-
-    if ($post_objects) : ?>
-
-      <div class="col-sm-12">
-        <h4 class="featured-news-header">Featured</h4>
-      </div>
-
-      <?php foreach ($post_objects as $post): setup_postdata($post); ?>
-        <?php if (has_post_thumbnail()) : ?>
-          <a class="col-sm-12 featured-news" href="<?php the_permalink(); ?>">
-            <?php the_post_thumbnail('large', ['class' => 'img-responsive']); ?>
-            <?php the_title(); ?>
-          </a>
-        <?php endif; ?>
-      <?php endforeach; wp_reset_postdata();
-
-    endif;
-
-  endif; ?>
-
-<?php elseif (is_market_page()) :
+<?php if (is_market_page()) :
 
   $images = get_field('market_images');
 
@@ -118,6 +89,8 @@ if ($services_id) {
   </div>
 
 <?php else :
+
+  echo('tesssst');
 
   $is_project = has_term('service-projects', 'type');
   
