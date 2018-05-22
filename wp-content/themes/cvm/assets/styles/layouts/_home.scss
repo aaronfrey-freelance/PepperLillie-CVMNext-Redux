@@ -98,6 +98,7 @@
   }
 }
 
+
 /* Small Devices, Tablets */
 
 @media only screen and (min-width: 768px) {
@@ -118,7 +119,16 @@
     bottom: 0;
     left: 0;
   }
+  .news-item {
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
 }
+
 
 /* Medium Devices, Desktops */
 
@@ -128,7 +138,7 @@
       padding: 0;
       .main {
         margin: 0;
-        width: calc(100% - 478px);        
+        width: calc(100% - 478px);
       }
       .sidebar {
         width: 470px;

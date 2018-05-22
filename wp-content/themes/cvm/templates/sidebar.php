@@ -2,7 +2,8 @@
 
   <?php $the_query = new WP_Query([
     'post_type' => 'project-type',
-    'post_status' => 'publish'
+    'post_status' => 'publish',
+    'post_parent' => 0
   ]);
 
   if ($the_query->have_posts()) : ?>
@@ -41,7 +42,9 @@
 
     <?php foreach ($images as $image) : ?>
 
-      <div class="service-project-box" style="background-image: url(<?php echo $image['sizes']['large']; ?>);">
+      <div
+        class="service-project-box"
+        style="background-image: url(<?php echo $image['sizes']['large']; ?>);">
         <div class="project-title"><?php echo $image['alt']; ?></div>
       </div>
 
@@ -51,28 +54,100 @@
 
   <?php endif; ?>
 
-<?php elseif (is_page('profile')) :
+<?php elseif (is_project_type_page()) : ?>
+  
+  <?php if (have_rows('featured_projects')) : ?>
 
-$menu_items = wp_get_nav_menu_items('Header Navigation');
-$services_id = 0;
-$services_sub = [];
+    <div class="row">
 
-foreach ($menu_items as $menu_item) {
-  if($menu_item->title === 'Services') {
-    $services_id = $menu_item->ID;
-    break;
-  }
-}
+      <?php while (have_rows('featured_projects')) : the_row();
 
-if ($services_id) {
-  foreach($menu_items as $menu_item) {
-    if($menu_item->menu_item_parent == $services_id) {
-      $services_sub[$menu_item->object_id] = null; 
+        if (get_sub_field('is_internal_project')) : ?>
+
+          <?php
+
+          $post_object = get_sub_field('project_post');
+
+          if ($post_object) :
+
+            // override $post
+            $post = $post_object;
+            setup_postdata($post);
+
+            $thumb_id = get_post_thumbnail_id($post->ID);
+            $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'large', true);
+            $thumb_url = $thumb_url_array[0]; ?>
+
+            <a href="<?php echo get_permalink(); ?>"
+              class="service-project-box"
+              style="background-image: url(<?php echo $thumb_url; ?>);">
+              <div class="project-title"><?php echo $post->post_title; ?></div>
+            </a>
+
+            <?php wp_reset_postdata(); ?>
+          
+          <?php endif; ?>
+
+        <?php else : ?>
+
+          <?php $image = get_sub_field('project_image'); ?>
+
+          <div
+            class="service-project-box"
+            style="background-image: url(<?php echo $image['url']; ?>);">
+            <div class="project-title">
+              <?php the_sub_field('project_title'); ?>
+            </div>
+          </div>
+
+        <?php endif; ?>
+
+      <?php endwhile; ?>
+
+    </div><!-- .row -->
+
+  <?php elseif(have_rows('project_images')) : ?>
+
+    <div class="row parent-container">
+
+      <?php while (have_rows('project_images')) : the_row();
+
+        $image = get_sub_field('project_image'); ?>
+        
+        <div class="col-md-12 col-sm-4">
+          <a
+            href="<?php echo $image['url']; ?>"
+            class="service-project-box"
+            style="background-image: url(<?php echo $image['sizes']['large']; ?>);">
+          </a>
+        </div>
+        
+      <?php endwhile; ?>
+
+    </div>
+
+  <?php endif;
+
+elseif (is_page('profile')) :
+
+  $menu_items = wp_get_nav_menu_items('Header Navigation');
+  $services_id = 0;
+  $services_sub = [];
+
+  foreach ($menu_items as $menu_item) {
+    if($menu_item->title === 'Services') {
+      $services_id = $menu_item->ID;
+      break;
     }
   }
-}
 
-?>
+  if ($services_id) {
+    foreach($menu_items as $menu_item) {
+      if($menu_item->menu_item_parent == $services_id) {
+        $services_sub[$menu_item->object_id] = null; 
+      }
+    }
+  } ?>
 
   <div class="sidebar-profile">
 
@@ -83,6 +158,7 @@ if ($services_id) {
     'posts_per_page' => -1,
     'post_type' => 'service'
   );
+
   $top_level_services = get_posts($args);
 
   foreach ($top_level_services as $post) :
@@ -117,9 +193,9 @@ if ($services_id) {
 
 <?php else :
 
-  $is_project = has_term('service-projects', 'type');
-  
-  if (!$is_project) : ?>
+  $is_service_project = has_term('service-projects', 'type');
+
+  if (!$is_service_project) : ?>
 
   <div class="row">
 
@@ -158,11 +234,13 @@ if ($services_id) {
   <?php endif; ?>
 
   <!-- Show the project images -->
-  <?php if ($is_project && have_rows('project_images')) : ?>
+  <?php if ($is_service_project && have_rows('project_images')) : ?>
 
     <div class="row parent-container">
 
-      <?php while (have_rows('project_images')) : the_row(); $image = get_sub_field('project_image'); ?>
+      <?php while (have_rows('project_images')) : the_row();
+
+        $image = get_sub_field('project_image'); ?>
         
         <div class="col-md-12 col-sm-4">
           <a

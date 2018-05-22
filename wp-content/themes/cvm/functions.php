@@ -111,13 +111,13 @@ function create_custom_post_types() {
   register_post_type('project-type',
     array(
       'labels' => array(
-        'name' => __('Project Types'),
-        'singular_name' => __('Project Type'),
-        'add_new_item' => 'Add New Project Type',
-        'edit_item' => 'Edit Project Type',
-        'featured_image' => 'Project Type Image',
-        'set_featured_image' => 'Set Project Type Image',
-        'remove_featured_image' => 'Remove Project Type Image'
+        'name' => __('Projects'),
+        'singular_name' => __('Project'),
+        'add_new_item' => 'Add New Project',
+        'edit_item' => 'Edit Project',
+        'featured_image' => 'Project Image',
+        'set_featured_image' => 'Set Project Image',
+        'remove_featured_image' => 'Remove Project Image'
       ),
       'public' => true,
       'show_in_nav_menus' => true,
@@ -126,6 +126,35 @@ function create_custom_post_types() {
       'supports' => ['editor', 'title', 'thumbnail', 'page-attributes']
     )
   );
+
+  $labels = array(
+    'name'                       => __( 'Project Types' ),
+    'singular_name'              => __( 'Project Type' ),
+    'search_items'               => __( 'Search Project Types' ),
+    'popular_items'              => __( 'Popular Project Types' ),
+    'all_items'                  => __( 'All Project Types' ),
+    'parent_item'                => null,
+    'parent_item_colon'          => null,
+    'edit_item'                  => __( 'Edit Project Type' ),
+    'update_item'                => __( 'Update Project Type' ),
+    'add_new_item'               => __( 'Add New Project Type' ),
+    'new_item_name'              => __( 'New Project Type Name' ),
+    'separate_items_with_commas' => __( 'Separate Project Types with commas' ),
+    'add_or_remove_items'        => __( 'Add or remove Project Types' ),
+    'choose_from_most_used'      => __( 'Choose from the most used Project Types' ),
+    'not_found'                  => __( 'No Project Types found.' ),
+    'menu_name'                  => __( 'Project Types' ),
+  );
+
+  $args = array(
+    'hierarchical'          => true,
+    'labels'                => $labels,
+    'show_ui'               => true,
+    'show_admin_column'     => true,
+    'update_count_callback' => '_update_post_term_count',
+    'query_var'             => true
+  );
+  register_taxonomy("project-types", "project-type", $args);
 
   register_post_type('service',
     array(
@@ -192,6 +221,12 @@ function is_service_page() {
 function is_market_page() {
   global $post;
   return $post->post_type === 'market' && !is_tag() && !is_search();
+}
+
+// Are we on a Project Type page?
+function is_project_type_page() {
+  global $post;
+  return $post->post_type === 'project-type' && !is_tag() && !is_search();
 }
 
 // Get the service page color
@@ -269,17 +304,23 @@ if( function_exists('acf_add_options_page') ) {
   
 }
 
-function get_posts_children($parent_id) {
+function get_posts_children($parent_id, $post_type = "service") {
   $children = array();
   // grab the posts children
-  $posts = get_posts( array( 'numberposts' => -1, 'post_status' => 'publish', 'post_type' => 'service', 'post_parent' => $parent_id, 'suppress_filters' => false ));
+  $posts = get_posts(array(
+    'numberposts' => -1,
+    'post_status' => 'publish',
+    'post_type' => $post_type,
+    'post_parent' => $parent_id,
+    'suppress_filters' => false));
+
   // now grab the grand children
-  foreach( $posts as $child ){
+  foreach($posts as $child) {
       // recursion!! hurrah
       $gchildren = get_posts_children($child->ID);
       // merge the grand children into the children array
-      if( !empty($gchildren) ) {
-          $children = array_merge($children, $gchildren);
+      if (!empty($gchildren)) {
+        $children = array_merge($children, $gchildren);
       }
   }
   // merge in the direct descendants we found earlier
