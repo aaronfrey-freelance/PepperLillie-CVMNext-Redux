@@ -1,14 +1,14 @@
 <?php if (is_front_page()) : ?>
 
   <?php $the_query = new WP_Query([
-    'post_type' => 'project-type',
+    'post_type' => 'market',
     'post_status' => 'publish',
     'post_parent' => 0
   ]);
 
   if ($the_query->have_posts()) : ?>
 
-    <div class="services-header">Project Types</div>
+    <div class="services-header">Markets</div>
 
     <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
 
@@ -22,7 +22,7 @@
 
         <div class="pull-left service-info">
           <div class="service-title"><?php the_title(); ?></div>
-          <div class="service-description"><?php the_field('project_type_description'); ?></div>
+          <div class="service-description"><?php the_field('market_description'); ?></div>
         </div>
         <i class="pull-right fa fa-chevron-right"></i>
 
