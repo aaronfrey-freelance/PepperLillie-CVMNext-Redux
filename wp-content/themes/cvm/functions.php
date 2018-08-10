@@ -127,34 +127,34 @@ function create_custom_post_types() {
     )
   );
 
-  $labels = array(
-    'name'                       => __( 'Project Types' ),
-    'singular_name'              => __( 'Project Type' ),
-    'search_items'               => __( 'Search Project Types' ),
-    'popular_items'              => __( 'Popular Project Types' ),
-    'all_items'                  => __( 'All Project Types' ),
-    'parent_item'                => null,
-    'parent_item_colon'          => null,
-    'edit_item'                  => __( 'Edit Project Type' ),
-    'update_item'                => __( 'Update Project Type' ),
-    'add_new_item'               => __( 'Add New Project Type' ),
-    'new_item_name'              => __( 'New Project Type Name' ),
-    'separate_items_with_commas' => __( 'Separate Project Types with commas' ),
-    'add_or_remove_items'        => __( 'Add or remove Project Types' ),
-    'choose_from_most_used'      => __( 'Choose from the most used Project Types' ),
-    'not_found'                  => __( 'No Project Types found.' ),
-    'menu_name'                  => __( 'Project Types' ),
-  );
+  // $labels = array(
+  //   'name'                       => __( 'Project Types' ),
+  //   'singular_name'              => __( 'Project Type' ),
+  //   'search_items'               => __( 'Search Project Types' ),
+  //   'popular_items'              => __( 'Popular Project Types' ),
+  //   'all_items'                  => __( 'All Project Types' ),
+  //   'parent_item'                => null,
+  //   'parent_item_colon'          => null,
+  //   'edit_item'                  => __( 'Edit Project Type' ),
+  //   'update_item'                => __( 'Update Project Type' ),
+  //   'add_new_item'               => __( 'Add New Project Type' ),
+  //   'new_item_name'              => __( 'New Project Type Name' ),
+  //   'separate_items_with_commas' => __( 'Separate Project Types with commas' ),
+  //   'add_or_remove_items'        => __( 'Add or remove Project Types' ),
+  //   'choose_from_most_used'      => __( 'Choose from the most used Project Types' ),
+  //   'not_found'                  => __( 'No Project Types found.' ),
+  //   'menu_name'                  => __( 'Project Types' ),
+  // );
 
-  $args = array(
-    'hierarchical'          => true,
-    'labels'                => $labels,
-    'show_ui'               => true,
-    'show_admin_column'     => true,
-    'update_count_callback' => '_update_post_term_count',
-    'query_var'             => true
-  );
-  register_taxonomy("project-types", "project-type", $args);
+  // $args = array(
+  //   'hierarchical'          => true,
+  //   'labels'                => $labels,
+  //   'show_ui'               => true,
+  //   'show_admin_column'     => true,
+  //   'update_count_callback' => '_update_post_term_count',
+  //   'query_var'             => true
+  // );
+  // register_taxonomy("project-types", "project-type", $args);
 
   register_post_type('service',
     array(
